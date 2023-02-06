@@ -68,8 +68,6 @@ npm run dev
 yarn dev
 ```
 
-## ✍ Customizing Tailwind Typography
-
 
 
 ## 📖 Learn More
