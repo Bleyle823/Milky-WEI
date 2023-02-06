@@ -81,10 +81,10 @@ yarn dev
 
 ### Stack
 
-
-
-### Installation
-
-
-
 ### Screenshots
+
+![MilkyWei screenshot 2](https://user-images.githubusercontent.com/86532040/217013241-4fb32849-e563-4a40-a6ce-5d4db1a39736.png)
+
+![MilkyWei screenshot3](https://user-images.githubusercontent.com/86532040/217013311-32f61b2b-576b-40ba-aef3-886dc2ed6c4c.png)
+
+![MilkyWei screenshot 1](https://user-images.githubusercontent.com/86532040/217013186-89f1b790-518b-4416-bc48-a82a9fffac81.png)
