@@ -81,13 +81,17 @@ yarn dev
 
 ### Stack
 
-##FlLECOIN VIRTUAL MACHINE - The NFTMarktplace oriented smart contract that will facilitate purchase, creation and selling of game development assets is deployed on the Filecoin Hyperspace testnet. In addition, Deployment of the frontend via Spheron will also leverage Filecoin for storage.
+## Filecoin Virtual Machine -
+The NFTMarketplace oriented smart contract that will facilitate purchase, creation and selling of game development assets is deployed on the Filecoin Hyperspace testnet. In addition, deployment of the frontend via Spheron will also leverage Filecoin for storage.
 
-##PUSH PROTOCOL - Push notifications will be a powerful tool for engaging with users and keeping them updated on relevant content. By leveraging the push protocol, notifications can be sent via messages that appear on the user's device. These notifications can be triggered based on certain events, such as when a user receives a message pertaining a game asset or when content is updated, and can be tailored to each user's interests and preferences. In this instance, push notifications are integrated within the wallet connect button.
+## Push Protocol - 
+Push notifications will be a powerful tool for engaging with users and keeping them updated on relevant content. By leveraging the push protocol, notifications can be sent via messages that appear on the user's device. These notifications can be triggered based on certain events, such as when a user receives a message pertaining to a game asset or when content is updated and can be tailored to each user's interests and preferences. In this instance, push notifications are integrated within the wallet connect button.
 
-##LIGHTHOUSE - Lighthouse is implemented in the project and can be accessed through the "choose file" button in the frontend hero section. It is used to store data permanently on IPFS after getting signed by the user.
+## Lighthouse - 
+Lighthouse, as implemented in the project can be accessed through the "choose file" button in the frontend hero section. It is used to store data permanently on IPFS after getting signed by the user.
 
-##SPHERON - Spheron was used to deploy and host the site.
+## Spheron -
+Spheron was used to deploy and host the site.
 
 ### Screenshots
 
