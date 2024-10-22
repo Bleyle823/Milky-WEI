@@ -1,102 +1,152 @@
 
-## 🚀 Getting Started
+# 🏗️ Scaffold-Base 🔵
 
-##### Setup
+<h4 align="center">
+  <a href="https://docs.scaffoldeth.io">Documentation</a> |
+  <a href="https://scaffoldeth.io">Website</a>
+</h4>
 
-> Install npm dependencies using npm install
+Scaffold-Base is a fork of Scaffold-ETH-2 ready to ship to Base. This fork provides native support for Base and Base Sepolia testnet, direct access to the Base faucets, and [coinbase-sdk-wallet](https://github.com/coinbase/coinbase-wallet-sdk/) beta preconfigured which allows 4337 account abstraction using passkeys.
 
-```shell
-cd Milky-WEI && npm install
+![Scaffold-Base)](https://github.com/damianmarti/se-2/assets/466652/eac667a7-68fb-4f69-a427-126f7de4114d)
+
+We highly recommend the Scaffold-ETH-2 docs as the primary guideline.
+
+# (forked from 🏗 Scaffold-ETH-2)
+
+🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+
+⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+
+- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
+- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
+- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
+- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
+- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+
+![Debug Contracts tab](https://github.com/damianmarti/se-2/assets/466652/672d178c-38c9-4c9a-953d-d36acf08f3cd)
+
+## Requirements
+
+Before you begin, you need to install the following tools:
+
+- [Node (>= v18.17)](https://nodejs.org/en/download/)
+- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
+- [Git](https://git-scm.com/downloads)
+
+## Quickstart
+
+To get started with Scaffold-Base, follow the steps below:
+
+1. Clone this repo & install dependencies
+
+```
+git clone https://github.com/BuidlGuidl/scaffold-base
+cd scaffold-base
+yarn install
 ```
 
-## Get a Private Key
+2. Run a local network in the first terminal:
 
-You can get a private key from a wallet provider [such as Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key).
-
-
-## Add your Private Key as an Environment Variable
-
-Add your private key as an environment variable by running this command:
-
- ```
-export PRIVATE_KEY='abcdef'
+```
+yarn chain
 ```
 
-If you use a .env file, don't commit and push any changes to .env files that may contain sensitive information, such as a private key! If this information reaches a public GitHub repository, someone can use it to check if you have any Mainnet funds in that wallet address, and steal them!
+This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
 
+3. On a second terminal, deploy the test contract:
 
-## Get the Deployer Address
-
-Run this command:
 ```
-yarn hardhat get-address
+yarn deploy
 ```
 
-The will show you the ethereum-style address associated with that private key and the filecoin-style f4 address (also known as t4 address on testnets)! The Ethereum address can now be exclusively used for almost all FEVM tools, including the faucet.
+This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
+4. On a third terminal, start your NextJS app:
 
-## Fund the Deployer Address
-
-Go to the [Hyperspace testnet faucet](https://hyperspace.yoga/#faucet), and paste in the Ethereum address from the previous step. This will send some hyperspace testnet FIL to the account.
-
-
-## Deploy the Contracts
-
-Currently there are 2 main types of contracts:
-
-* Basic Solidity Examples: Simple contracts to show off basic solidity
-
-* Filecoin API Examples: Contracts that demo how to use the Filecoin APIs in Solidity to access storage deals and other Filecoin specific functions.
-
-
-Type in the following command in the terminal to deploy all contracts:
-
- ```
-yarn hardhat deploy
+```
+yarn start
 ```
 
-This will compile all the contracts in the contracts folder and deploy them to the Hyperspace test network automatically!
+Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
 
-Keep note of the deployed contract addresses for the next step.
+**What's next**:
+
+- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
+- Edit your deployment scripts in `packages/hardhat/deploy`
+- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
+
+
+Redeploy your contracts:
+
+```
+yarn deploy --reset
 ```
 
-Let's Run this command for dev
 
-```shell
-npm run dev
---or--
-yarn dev
+# 🔵 Deploy to Base
+
+
+When you are ready to deploy to Base, generate a deployer account: 
+
+```
+yarn generate
 ```
 
 
 
-## 📖 Learn More
+Fund the deployer account with ETH on Base at:
+
+```
+yarn account
+```
 
 
+Deploy to Base:
 
-## ☁ Deploy
+```
+yarn deploy --network base 
+```
 
 
+Set your target network to Base:
+
+> Change "chains.hardhat" to "chains.base" in targetNetworks from `scaffold.config.ts` in `packages/nextjs`
 
 
-### Stack
+Deploy your app to Vercel:
 
-## Filecoin Virtual Machine -
-The NFTMarketplace oriented smart contract that will facilitate purchase, creation and selling of game development assets is deployed on the Filecoin Hyperspace testnet. In addition, deployment of the frontend via Spheron will also leverage Filecoin for storage.
+```
+yarn vercel:yolo --prod
+```
 
-## Push Protocol - 
-Push notifications will be a powerful tool for engaging with users and keeping them updated on relevant content. By leveraging the push protocol, notifications can be sent via messages that appear on the user's device. These notifications can be triggered based on certain events, such as when a user receives a message pertaining to a game asset or when content is updated and can be tailored to each user's interests and preferences. In this instance, push notifications are integrated within the wallet connect button.
+# 🍽️ Fork Mainnet Base
 
-## Lighthouse - 
-Lighthouse, as implemented in the project can be accessed through the "choose file" button in the frontend hero section. It is used to store data permanently on IPFS after getting signed by the user.
+> stop your `yarn chain`
 
-## Spheron -
-Spheron was used to deploy and host the site.
+```
 
-### Screenshots
+yarn fork
 
-![MilkyWei screenshot 2](https://user-images.githubusercontent.com/86532040/217013241-4fb32849-e563-4a40-a6ce-5d4db1a39736.png)
+```
 
-![MilkyWei screenshot3](https://user-images.githubusercontent.com/86532040/217013311-32f61b2b-576b-40ba-aef3-886dc2ed6c4c.png)
+(now your local hardhat chain is a fork of Base and you can talk to forked Base contracts)
 
-![MilkyWei screenshot 1](https://user-images.githubusercontent.com/86532040/217013186-89f1b790-518b-4416-bc48-a82a9fffac81.png)
+# <img src="https://github.com/damianmarti/se-2/assets/466652/a795d1f3-980b-4e53-9784-ac53b6dd980e" width="35"> Coinbase Smart Wallet
+
+Coinbase Smart Wallet will be shown automatically when [scaffold.config.ts](https://github.com/BuidlGuidl/scaffold-base/blob/main/packages/nextjs/scaffold.config.ts) `targetNetworks` contains the network ***baseSepolia***.
+
+Since [coinbase beta sdk connector](https://github.com/coinbase/coinbase-wallet-sdk/blob/master/packages/wallet-sdk/docs/v4_with_wagmi.md) for now only works with Base Sepolia.
+
+For interacting with contracts, you can nicely use [scaffold-eth custom hooks](https://docs.scaffoldeth.io/hooks/) (wrappers around wagmi) or wagmi hooks directly without needing to change anything. 
+
+## Documentation
+
+Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+
+To know more about its features, check out our [website](https://scaffoldeth.io).
+
+## Contributing
+
+Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
